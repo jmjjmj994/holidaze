@@ -1,15 +1,16 @@
 import { z } from 'zod';
-export const loginSchema = z.object({
+export const LoginFormSchema = z.object({
   email: z
     .string()
-    .min(1, 'Email field is required')
+    .min(1, 'Please enter your email address')
     .regex(/^[^\s@]+@stud\.noroff\.no$/, {
-      message: 'Email must be a valid stud.noroff.no email address',
+      message:
+        ' Your email address must be a valid NOROFF student email ending with "@stud.noroff.no"',
     }),
-  password: z.string().min(8, 'Password field is required'),
+  password: z.string().min(8, 'Please enter your password'),
 });
 
-export const resultsSchema = z.object({
+export const ResultsSchema = z.object({
   accessToken: z.string(),
   avatar: z.object({
     url: z.string(),
@@ -25,5 +26,5 @@ export const resultsSchema = z.object({
   name: z.string(),
 });
 
-export type LoginSchemaType = z.infer<typeof loginSchema>;
-export type ResultsSchemaType = z.infer<typeof resultsSchema>;
+export type LoginForm = z.infer<typeof LoginFormSchema>;
+export type Results = z.infer<typeof ResultsSchema>;

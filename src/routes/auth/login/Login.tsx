@@ -1,4 +1,4 @@
-import { LoginForm } from './LoginForm';
+import { SignInForm } from './SignInForm';
 //https://v2.api.noroff.dev/holidaze/venues/?_owner=true&_bookings=true&page=${currentPage}
 export const Login = () => {
   return (
@@ -6,7 +6,7 @@ export const Login = () => {
       <div className="max-w-[50rem] w-full text-center title-gap">
         <h1 className="text-xl ">Log in or sign up</h1>
       </div>
-      <LoginForm />
+      <SignInForm />
     </section>
   );
 };

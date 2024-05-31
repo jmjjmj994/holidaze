@@ -1,4 +1,5 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { RefObject } from 'react';
+import { FieldValues } from 'react-hook-form';
 interface InputProps extends FieldValues {
   type: string;
   label: string;
@@ -6,9 +7,7 @@ interface InputProps extends FieldValues {
   name: string;
   required: boolean;
   optional: boolean;
-  error?: string;
-  register: UseFormRegister<FieldValues>;
-  errorRef?: HTMLElement;
+  errors?: string;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -19,7 +18,7 @@ export const Input: React.FC<InputProps> = ({
   required,
   optional,
   register,
-  error,
+  errors,
   errorRef,
 }) => {
   return (
@@ -38,9 +37,9 @@ export const Input: React.FC<InputProps> = ({
         {...register(name)}
       />
       <div className="min-h-[5vh] py-2">
-        {error && (
+        {errors && (
           <label className="flex items-center gap-2" htmlFor={`error-${name}`}>
-            <p className="text-sm">{error}</p>
+            <p className="text-sm text-red-500">{errors.toString()}</p>
           </label>
         )}
       </div>
