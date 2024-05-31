@@ -107,7 +107,11 @@ export const Profile = () => {
 
   return (
     <section className="relative flex items-center bg-orange-500">
-      <button onClick={handlePropagation}>
+      <button
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        onClick={handlePropagation}
+      >
         <User size={25} />
       </button>
       <ProfileModal isOpen={isOpen} handleIsClosed={handleIsClosed} />
