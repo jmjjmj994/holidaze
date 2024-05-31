@@ -24,16 +24,15 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <label className="flex flex-col" htmlFor={id}>
-      <div className="flex items-center gap-2">
-        <p>
-          {label} {required && <span className="text-xs">(obligatorisk) </span>}
-          {optional && <span className="text-xs">(valgfritt) </span>}
-        </p>
-      </div>
+      <p>
+        {label} {required && <span className="text-xs">(required) </span>}
+        {optional && <span className="text-xs">(optional) </span>}
+      </p>
+
       <input
         className={`${
           errorRef ? 'border-red-500' : 'border'
-        } border rounded-md py-1`}
+        } border  py-2 rounded-sm pl-2`}
         type={type}
         id={id}
         {...register(name)}

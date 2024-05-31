@@ -1,5 +1,6 @@
 import { User } from 'phosphor-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 type ProfileModalProps = {
   isOpen: boolean;
   handleIsClosed: () => void;
@@ -77,7 +78,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
     >
       <ul ref={menuListRef} role="menu-list">
         <li tabIndex={-1} role="menu-list-item">
-          <a href="#">Link1</a>
+          <Link onClick={handleIsClosed} to={'/sign-in'}>
+            Sign in
+          </Link>
         </li>
         <li tabIndex={-1} role="menu-list-item">
           <a href="#">Link1</a>

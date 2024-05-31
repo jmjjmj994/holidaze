@@ -168,3 +168,7 @@ body {
 .main-wrapper {
   grid-area: wrapper;
 }
+
+.title-gap {
+  margin-block-end: 5rem;
+}
