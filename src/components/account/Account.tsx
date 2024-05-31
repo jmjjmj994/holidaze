@@ -1,3 +1,4 @@
+import { SignIn, SignOut, NotePencil, Info } from 'phosphor-react';
 import { User } from 'phosphor-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,7 @@ type ProfileModalProps = {
   handleIsClosed: () => void;
 };
 
-export const ProfileModal: React.FC<ProfileModalProps> = ({
+export const AccountDropdown: React.FC<ProfileModalProps> = ({
   isOpen,
   handleIsClosed,
 }) => {
@@ -76,31 +77,48 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       } absolute top-[30px] right-0 shadow-overlay border rounded sm py-4 px-4 w-[20rem] bg-custom-background_white`}
       role="menu-nav"
     >
-      <ul ref={menuListRef} role="menu-list">
-        <li tabIndex={-1} role="menu-list-item">
+      <ul ref={menuListRef} role="menu-list" className="flex flex-col gap-5">
+        <li
+          tabIndex={-1}
+          role="menu-list-item"
+          className="flex items-center gap-4"
+        >
+          <SignIn size={25} weight="light" />
           <Link onClick={handleIsClosed} to={'/sign-in'}>
             Sign in
           </Link>
         </li>
-        <li tabIndex={-1} role="menu-list-item">
-          <a href="#">Link1</a>
+        <li
+          tabIndex={-1}
+          role="menu-list-item"
+          className="flex items-center gap-4"
+        >
+          <SignOut size={25} weight="light" />
+          <Link to={'/'}>Sign out</Link>
         </li>
-        <li tabIndex={-1} role="menu-list-item">
-          <a href="#">Link1</a>
+        <li
+          tabIndex={-1}
+          role="menu-list-item"
+          className="flex items-center gap-4"
+        >
+          <NotePencil size={25} weight="light" />
+          <Link to={'/register'}>Create an account</Link>
         </li>
-        <li tabIndex={-1} role="menu-list-item">
-          <a href="#">Link1</a>
-        </li>
-        <li tabIndex={-1} role="menu-list-item">
-          <a href="#">Link1</a>
+        <li
+          tabIndex={-1}
+          role="menu-list-item"
+          className="flex items-center gap-4"
+        >
+          <Info size={25} weight="light" />
+          <Link to={''}>Get help</Link>
         </li>
       </ul>
     </nav>
   );
 };
 
-export const Profile = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const Account = () => {
+  const [isOpen, setIsOpen] = useState(true);
   const handlePropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
     handleIsOpen();
@@ -117,7 +135,7 @@ export const Profile = () => {
       >
         <User size={25} />
       </button>
-      <ProfileModal isOpen={isOpen} handleIsClosed={handleIsClosed} />
+      <AccountDropdown isOpen={isOpen} handleIsClosed={handleIsClosed} />
     </section>
   );
 };

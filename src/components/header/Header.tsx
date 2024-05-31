@@ -4,7 +4,7 @@ import { HamburgerButton } from './HamburgerButton';
 import { useActive } from 'src/hooks/use-active.hook';
 import { useMediaMatch } from 'src/hooks/use-media-match.hook';
 import { SearchBar } from '../searchbar/SearchBar';
-import { Profile } from '../profile/Profile';
+import { Account } from '../account/Account';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +36,7 @@ export const Header = () => {
             handleIsActiveTrue={handleIsActiveTrue}
           />
           <div className="flex items-center justify-center gap-2">
-            <Profile />
+            <Account />
             <HamburgerButton onClick={handleIsActiveTrue} />
           </div>
         </div>
