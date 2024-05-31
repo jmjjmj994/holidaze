@@ -74,7 +74,7 @@ export const AccountDropdown: React.FC<ProfileModalProps> = ({
       ref={ref}
       className={`${
         isOpen ? 'block' : 'hidden'
-      } absolute top-[30px] right-0 shadow-overlay border rounded sm py-4 px-4 w-[20rem] bg-custom-background_white`}
+      } absolute top-[50px] right-0 shadow-overlay border rounded sm py-4 px-4 w-[20rem] bg-custom-background_white`}
       role="menu-nav"
     >
       <ul ref={menuListRef} role="menu-list" className="flex flex-col gap-5">
@@ -118,7 +118,7 @@ export const AccountDropdown: React.FC<ProfileModalProps> = ({
 };
 
 export const Account = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const handlePropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
     handleIsOpen();
@@ -127,8 +127,9 @@ export const Account = () => {
   const handleIsClosed = useCallback(() => setIsOpen(false), []);
 
   return (
-    <section className="relative flex items-center bg-orange-500">
+    <section className="relative flex items-center justify-center rounded-md border hover:shadow-raised transition-shadow">
       <button
+        className=" px-6 py-1 rounded-md"
         aria-expanded={isOpen}
         aria-haspopup="true"
         onClick={handlePropagation}

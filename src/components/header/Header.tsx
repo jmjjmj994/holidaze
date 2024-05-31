@@ -35,7 +35,7 @@ export const Header = () => {
             handleIsActiveFalse={handleIsActiveFalse}
             handleIsActiveTrue={handleIsActiveTrue}
           />
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-4">
             <Account />
             <HamburgerButton onClick={handleIsActiveTrue} />
           </div>
