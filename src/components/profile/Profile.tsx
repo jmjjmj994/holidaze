@@ -34,6 +34,17 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       if (e.key === 'Tab') {
         setListIndex(listIndex + 1);
       }
+      if (menuListRef.current) {
+        const menuListItems = menuListRef.current.querySelectorAll('li');
+        menuListItems.forEach((item, index) => {
+          if (index === listIndex) {
+            item.style.backgroundColor = 'orange';
+          } else {
+            item.style.backgroundColor = '';
+          }
+        });
+      }
+
       if (menuListItems.length - 1 + 1 === listIndex) {
         handleIsClosed();
         setListIndex(0);
@@ -65,19 +76,19 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       role="menu-nav"
     >
       <ul ref={menuListRef} role="menu-list">
-        <li tabIndex={-1} role="menu-list-item" className="first">
+        <li tabIndex={-1} role="menu-list-item">
           <a href="#">Link1</a>
         </li>
-        <li tabIndex={-1} role="menu-list-item" className="second">
+        <li tabIndex={-1} role="menu-list-item">
           <a href="#">Link1</a>
         </li>
-        <li tabIndex={-1} role="menu-list-item" className="third">
+        <li tabIndex={-1} role="menu-list-item">
           <a href="#">Link1</a>
         </li>
-        <li tabIndex={-1} role="menu-list-item" className="four">
+        <li tabIndex={-1} role="menu-list-item">
           <a href="#">Link1</a>
         </li>
-        <li tabIndex={-1} role="menu-list-item" className="fve">
+        <li tabIndex={-1} role="menu-list-item">
           <a href="#">Link1</a>
         </li>
       </ul>
