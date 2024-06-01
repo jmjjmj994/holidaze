@@ -122,5 +122,3 @@ export const AccountDropdownMenu: React.FC<AccountDropdownMenuProps> = ({
     </nav>
   );
 };
-
-
