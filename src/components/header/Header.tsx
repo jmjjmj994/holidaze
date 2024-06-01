@@ -40,7 +40,7 @@ export const Header = () => {
             <HamburgerButton onClick={handleIsActiveTrue} />
           </div>
         </div>
-        {location.pathname !== '/sign-in' && <SearchBar />}
+        {location.pathname === '/' && <SearchBar />}
       </section>
     </header>
   );

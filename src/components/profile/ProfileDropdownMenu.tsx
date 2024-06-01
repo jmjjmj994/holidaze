@@ -20,7 +20,7 @@ export const ProfileDropdownMenu: React.FC<ProfileDropdownMenuProps> = ({
   const menuListItems = Array.from(
     menuListRef?.current?.querySelectorAll('li') || []
   ) as HTMLLIElement[];
-
+  console.log(menuListItems);
   useKeyEvent(handleIsClosed);
   useClickOutside(handleIsClosed, menuListRef);
 
@@ -32,12 +32,10 @@ export const ProfileDropdownMenu: React.FC<ProfileDropdownMenuProps> = ({
 
   useEffect(() => {
     if (!isOpen) return;
-
     const handleListIndex = (e: KeyboardEvent) => {
       if (e.key === 'Tab') {
         const newIndex = listIndex + 1;
         setListIndex(newIndex);
-        e.preventDefault();
       }
     };
 
@@ -52,11 +50,11 @@ export const ProfileDropdownMenu: React.FC<ProfileDropdownMenuProps> = ({
     if (menuListRef.current) {
       const menuListItems = menuListRef.current.querySelectorAll('li');
       menuListItems.forEach((item, index) => {
-        item.style.backgroundColor = index === listIndex ? 'orange' : '';
+        item.style.backgroundColor = index + 1 === listIndex ? 'orange' : '';
       });
     }
 
-    if (menuListItems.length === listIndex) {
+    if (menuListItems.length + 1 === listIndex) {
       handleIsClosed();
       setListIndex(0);
     }
@@ -65,7 +63,11 @@ export const ProfileDropdownMenu: React.FC<ProfileDropdownMenuProps> = ({
   const userIsAuthenticated = (
     <>
       <li tabIndex={-1} role="menu-list-item">
-        <Link className="flex items-center gap-4" to={'/'}>
+        <Link
+          onClick={handleIsClosed}
+          className="flex items-center gap-4"
+          to={'/account'}
+        >
           <User size={25} weight="light" />
           My account
         </Link>
