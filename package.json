@@ -13,6 +13,7 @@
     "@hookform/resolvers": "^3.4.2",
     "@tanstack/react-query": "^5.40.0",
     "@tanstack/react-query-devtools": "^5.40.0",
+    "axios": "^1.7.2",
     "framer-motion": "^11.2.9",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
