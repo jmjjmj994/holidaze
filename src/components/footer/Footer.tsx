@@ -1,7 +1,11 @@
+import { useLocation } from 'react-router-dom';
 export const Footer = () => {
+  const location = useLocation();
   return (
-    <footer className="footer">
-      <section className="footer-wrapper"></section>
+    <footer
+      className={`${location.pathname === '/' ? 'root-footer' : 'footer'}`}
+    >
+      <section className="footer-wrapper">Footer</section>
     </footer>
   );
 };

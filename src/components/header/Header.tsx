@@ -20,8 +20,12 @@ export const Header = () => {
   }, [handleIsActiveFalse, isMobile]);
 
   return (
-    <header className="header element-darken">
-      <section className="flex flex-col header-wrapper">
+    <header
+      className={`${
+        location.pathname === '/' ? 'root-header' : 'header'
+      } element-darken`}
+    >
+      <section className={` flex flex-col header-wrapper`}>
         <div className="flex items-center justify-between h-1/2">
           <div>
             <Link className="text-2xl inter-bold" to={'/'}>
