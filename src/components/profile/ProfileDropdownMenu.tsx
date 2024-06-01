@@ -2,7 +2,7 @@ import { SignIn, SignOut, NotePencil, Info, User } from 'phosphor-react';
 import { useRef, useState, useEffect } from 'react';
 import { useClickOutside } from 'src/hooks/dropdown/use-click-outside.hook';
 import { useKeyEvent } from 'src/hooks/dropdown/use-key-event.hook';
-import { hasToken } from 'src/helpers/helpers';
+import { hasToken } from 'src/utilities/utilities';
 import { Link } from 'react-router-dom';
 type ProfileDropdownMenuProps = {
   isOpen: boolean;

@@ -1,6 +1,12 @@
+import { useState } from 'react';
 import { PiSealCheckLight } from 'react-icons/pi';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
-export const AccountCard = () => {
+type AccountCardProps = {
+  handleOpenModal: () => void;
+};
+export const AccountCard: React.FC<AccountCardProps> = ({
+  handleOpenModal,
+}) => {
   return (
     <article className="flex flex-col gap-4 bg-custom-background_white  shadow-raised  max-w-[20rem] w-full px-2 py-2 rounded-md border">
       <img
@@ -17,7 +23,7 @@ export const AccountCard = () => {
         </p>
       </div>
       <div>
-        <PrimaryButton type="button" width="auto">
+        <PrimaryButton onClick={handleOpenModal} type="button" width="auto">
           Edit profile
         </PrimaryButton>
       </div>
