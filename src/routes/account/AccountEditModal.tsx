@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-
+import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
 type AccountModalProps = {
   handleCloseModal: () => void;
   modalVisible: boolean;
@@ -9,7 +9,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
   handleCloseModal,
   modalVisible,
 }) => {
-  const dialogElement = useRef(null);
+  const dialogElement = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     if (modalVisible) {
       dialogElement.current?.showModal();
@@ -17,6 +17,8 @@ export const AccountModal: React.FC<AccountModalProps> = ({
       dialogElement.current?.close();
     }
   }, [modalVisible]);
+
+  useKeyEscape(handleCloseModal);
   return (
     <dialog
       ref={dialogElement}
