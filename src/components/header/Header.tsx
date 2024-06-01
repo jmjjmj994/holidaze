@@ -12,7 +12,6 @@ export const Header = () => {
   const { isActive, handleIsActiveFalse, handleIsActiveTrue } = useActive();
   const [isMobile] = useMediaMatch('768');
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     if (!isMobile) {

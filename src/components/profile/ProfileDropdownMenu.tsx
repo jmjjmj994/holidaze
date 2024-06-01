@@ -20,7 +20,7 @@ export const ProfileDropdownMenu: React.FC<ProfileDropdownMenuProps> = ({
   const menuListItems = Array.from(
     menuListRef?.current?.querySelectorAll('li') || []
   ) as HTMLLIElement[];
-  console.log(menuListItems);
+
   useKeyEvent(handleIsClosed);
   useClickOutside(handleIsClosed, menuListRef);
 

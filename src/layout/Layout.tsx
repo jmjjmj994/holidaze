@@ -2,7 +2,6 @@ import { Header } from 'src/components/header/Header';
 import { Footer } from 'src/components/footer/Footer';
 import { Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { useState } from 'react';
 export const Layout = () => {
 
   return (
