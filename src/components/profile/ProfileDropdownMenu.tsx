@@ -4,12 +4,12 @@ import { useClickOutside } from 'src/hooks/dropdown/use-click-outside.hook';
 import { useKeyEvent } from 'src/hooks/dropdown/use-key-event.hook';
 import { hasToken } from 'src/helpers/helpers';
 import { Link } from 'react-router-dom';
-type AccountDropdownMenuProps = {
+type ProfileDropdownMenuProps = {
   isOpen: boolean;
   handleIsClosed: () => void;
 };
 
-export const AccountDropdownMenu: React.FC<AccountDropdownMenuProps> = ({
+export const ProfileDropdownMenu: React.FC<ProfileDropdownMenuProps> = ({
   isOpen,
   handleIsClosed,
 }) => {
