@@ -1,5 +1,5 @@
 import { MagnifyingGlass } from 'phosphor-react';
-import { Filter } from './Filter';
+
 export const SearchBar = () => {
   return (
     <section className="flex items-center justify-center  max-w-[50rem] w-full m-auto gap-4">
@@ -23,7 +23,6 @@ export const SearchBar = () => {
           />
         </section>
       </form>
-      <Filter />
     </section>
   );
 };

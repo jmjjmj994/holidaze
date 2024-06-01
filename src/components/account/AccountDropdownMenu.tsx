@@ -57,39 +57,32 @@ export const AccountDropdownMenu: React.FC<AccountDropdownMenuProps> = ({
       role="menu-nav"
     >
       <ul ref={menuListRef} role="menu-list" className="flex flex-col gap-5">
-        <li
-          tabIndex={-1}
-          role="menu-list-item"
-          className="flex items-center gap-4"
-        >
-          <SignIn size={25} weight="light" />
-          <Link onClick={handleIsClosed} to={'/sign-in'}>
+        <li tabIndex={-1} role="menu-list-item">
+          <Link
+            className="flex items-center gap-4"
+            onClick={handleIsClosed}
+            to={'/sign-in'}
+          >
+            <SignIn size={25} weight="light" />
             Sign in
           </Link>
         </li>
-        <li
-          tabIndex={-1}
-          role="menu-list-item"
-          className="flex items-center gap-4"
-        >
-          <SignOut size={25} weight="light" />
-          <Link to={'/'}>Sign out</Link>
+        <li tabIndex={-1} role="menu-list-item">
+          <Link className="flex items-center gap-4" to={'/'}>
+            <SignOut size={25} weight="light" />
+            Sign out
+          </Link>
         </li>
-        <li
-          tabIndex={-1}
-          role="menu-list-item"
-          className="flex items-center gap-4"
-        >
-          <NotePencil size={25} weight="light" />
-          <Link to={'/register'}>Create an account</Link>
+        <li tabIndex={-1} role="menu-list-item">
+          <Link className="flex items-center gap-4" to={'/register'}>
+            <NotePencil size={25} weight="light" /> Create an account
+          </Link>
         </li>
-        <li
-          tabIndex={-1}
-          role="menu-list-item"
-          className="flex items-center gap-4"
-        >
-          <Info size={25} weight="light" />
-          <Link to={''}>Get help</Link>
+        <li tabIndex={-1} role="menu-list-item">
+          <Link className="flex items-center gap-4" to={''}>
+            <Info size={25} weight="light" />
+            Get help
+          </Link>
         </li>
       </ul>
     </nav>
