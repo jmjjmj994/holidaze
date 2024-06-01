@@ -79,27 +79,27 @@ h6 {
 
 /* Typography */
 h1 {
-  font-size: 40px;
+  font-size: 25px;
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 18px;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 6px;
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 6px;
 }
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: 'IBM Plex Serif', serif;
-  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
 }
 
 body {
@@ -143,8 +143,8 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 10rem 1fr 10rem;
-  gap: 5rem;
+  grid-template-rows: auto 1fr 10rem;
+  gap: 3rem;
 }
 
 .root-header,

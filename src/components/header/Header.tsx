@@ -25,8 +25,12 @@ export const Header = () => {
         location.pathname === '/' ? 'root-header' : 'header'
       } element-darken`}
     >
-      <section className={` flex flex-col header-wrapper`}>
-        <div className="flex items-center justify-between h-1/2">
+      <section className={`flex flex-col header-wrapper`}>
+        <div
+          className={`${
+            location.pathname === '/' ? 'h-1/2 py-4' : 'h-full py-4'
+          } flex items-center justify-between  `}
+        >
           <div>
             <Link className="text-2xl inter-bold" to={'/'}>
               Holidaze.
