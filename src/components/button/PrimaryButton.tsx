@@ -4,7 +4,7 @@ type PrimaryButtonProps = {
   children: string | JSX.Element;
   onClick?: () => void;
   width: string;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({

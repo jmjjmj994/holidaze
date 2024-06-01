@@ -1,6 +1,6 @@
 import { Warning, CheckCircle } from 'phosphor-react';
 
-export const AuthFeedback = ({
+export const RegisterError = ({
   variant,
   children,
 }: {

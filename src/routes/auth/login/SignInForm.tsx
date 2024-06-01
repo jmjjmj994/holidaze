@@ -64,24 +64,23 @@ export const SignInForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-[50rem] w-full">
-      <div>
-        <Input
-          type="text"
-          name="email"
-          id="email"
-          label="email"
-          errorRef={errors.email?.ref as HTMLInputElement}
-          required={true}
-          optional={false}
-          register={register}
-          errors={errors?.email?.message}
-        />
-      </div>
+      <Input
+        type="text"
+        name="email"
+        id="email"
+        label="Email address"
+        errorRef={errors.email?.ref as HTMLInputElement}
+        required={true}
+        optional={false}
+        register={register}
+        errors={errors?.email?.message}
+      />
+
       <Input
         type="password"
         name="password"
         id="password"
-        label="password"
+        label="Password"
         errorRef={errors.password?.ref as HTMLInputElement}
         required={true}
         optional={false}
@@ -90,7 +89,7 @@ export const SignInForm = () => {
       />
 
       <PrimaryButton type="submit" width="full" disabled={isLoading}>
-        {isLoading ? 'Logging in...' : 'Log in'}
+        {isLoading ? 'Signing in...' : 'Sign in'}
       </PrimaryButton>
 
       <span>
