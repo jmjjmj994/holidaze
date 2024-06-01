@@ -1,9 +1,9 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { User } from 'phosphor-react';
 import { AccountDropdownMenu } from './AccountDropdownMenu';
 export const Account = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const handleIsClosed = useCallback(() => setIsOpen(false), []);
+  const handleIsClosed = () => setIsOpen(false);
   const handlePropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsOpen((prev) => !prev);

@@ -25,29 +25,41 @@ export const AccountDropdownMenu: React.FC<AccountDropdownMenuProps> = ({
   useClickOutside(handleIsClosed, menuListRef);
 
   useEffect(() => {
+    if (!isOpen) {
+      setListIndex(0);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     if (!isOpen) return;
+
     const handleListIndex = (e: KeyboardEvent) => {
       if (e.key === 'Tab') {
-        setListIndex(listIndex + 1);
-      }
-      if (menuListRef.current) {
-        const menuListItems = menuListRef.current.querySelectorAll('li');
-        menuListItems.forEach((item, index) => {
-          if (index === listIndex) {
-            item.style.backgroundColor = 'orange';
-          } else {
-            item.style.backgroundColor = '';
-          }
-        });
-      }
-
-      if (menuListItems.length - 1 + 1 === listIndex) {
-        handleIsClosed();
-        setListIndex(0);
+        const newIndex = listIndex + 1;
+        setListIndex(newIndex);
+        e.preventDefault();
       }
     };
+
     window.addEventListener('keydown', handleListIndex);
-    return () => window.removeEventListener('keydown', handleListIndex);
+
+    return () => {
+      window.removeEventListener('keydown', handleListIndex);
+    };
+  }, [listIndex, isOpen]);
+
+  useEffect(() => {
+    if (menuListRef.current) {
+      const menuListItems = menuListRef.current.querySelectorAll('li');
+      menuListItems.forEach((item, index) => {
+        item.style.backgroundColor = index === listIndex ? 'orange' : '';
+      });
+    }
+
+    if (menuListItems.length === listIndex) {
+      handleIsClosed();
+      setListIndex(0);
+    }
   }, [listIndex, menuListItems, handleIsClosed, isOpen]);
 
   const userIsAuthenticated = (
