@@ -1,7 +1,8 @@
-import { SignIn, SignOut, NotePencil, Info } from 'phosphor-react';
+import { SignIn, SignOut, NotePencil, Info, User } from 'phosphor-react';
 import { useRef, useState, useEffect } from 'react';
 import { useClickOutside } from 'src/hooks/dropdown/use-click-outside.hook';
 import { useKeyEvent } from 'src/hooks/dropdown/use-key-event.hook';
+import { hasToken } from 'src/helpers/helpers';
 import { Link } from 'react-router-dom';
 type AccountDropdownMenuProps = {
   isOpen: boolean;
@@ -12,6 +13,7 @@ export const AccountDropdownMenu: React.FC<AccountDropdownMenuProps> = ({
   isOpen,
   handleIsClosed,
 }) => {
+  const userHasToken = hasToken();
   const [listIndex, setListIndex] = useState(0);
   const ref = useRef(null);
   const menuListRef = useRef<HTMLUListElement | null>(null);
@@ -48,6 +50,64 @@ export const AccountDropdownMenu: React.FC<AccountDropdownMenuProps> = ({
     return () => window.removeEventListener('keydown', handleListIndex);
   }, [listIndex, menuListItems, handleIsClosed, isOpen]);
 
+  const userIsAuthenticated = (
+    <>
+      <li tabIndex={-1} role="menu-list-item">
+        <Link className="flex items-center gap-4" to={'/'}>
+          <User size={25} weight="light" />
+          My account
+        </Link>
+      </li>
+
+      <li tabIndex={-1} role="menu-list-item">
+        <Link
+          onClick={() => {
+            handleIsClosed();
+            localStorage.clear();
+          }}
+          className="flex items-center gap-4"
+          to={'/'}
+        >
+          <SignOut size={25} weight="light" />
+          Sign out
+        </Link>
+      </li>
+
+      <li tabIndex={-1} role="menu-list-item">
+        <Link className="flex items-center gap-4" to={''}>
+          <Info size={25} weight="light" />
+          Get help
+        </Link>
+      </li>
+    </>
+  );
+
+  const userNotAuthenticated = (
+    <>
+      <li tabIndex={-1} role="menu-list-item">
+        <Link
+          className="flex items-center gap-4"
+          onClick={handleIsClosed}
+          to={'/sign-in'}
+        >
+          <SignIn size={25} weight="light" />
+          Sign in
+        </Link>
+      </li>
+      <li tabIndex={-1} role="menu-list-item">
+        <Link className="flex items-center gap-4" to={'/register'}>
+          <NotePencil size={25} weight="light" /> Create an account
+        </Link>
+      </li>
+      <li tabIndex={-1} role="menu-list-item">
+        <Link className="flex items-center gap-4" to={''}>
+          <Info size={25} weight="light" />
+          Get help
+        </Link>
+      </li>
+    </>
+  );
+
   return (
     <nav
       ref={ref}
@@ -57,34 +117,10 @@ export const AccountDropdownMenu: React.FC<AccountDropdownMenuProps> = ({
       role="menu-nav"
     >
       <ul ref={menuListRef} role="menu-list" className="flex flex-col gap-5">
-        <li tabIndex={-1} role="menu-list-item">
-          <Link
-            className="flex items-center gap-4"
-            onClick={handleIsClosed}
-            to={'/sign-in'}
-          >
-            <SignIn size={25} weight="light" />
-            Sign in
-          </Link>
-        </li>
-        <li tabIndex={-1} role="menu-list-item">
-          <Link className="flex items-center gap-4" to={'/'}>
-            <SignOut size={25} weight="light" />
-            Sign out
-          </Link>
-        </li>
-        <li tabIndex={-1} role="menu-list-item">
-          <Link className="flex items-center gap-4" to={'/register'}>
-            <NotePencil size={25} weight="light" /> Create an account
-          </Link>
-        </li>
-        <li tabIndex={-1} role="menu-list-item">
-          <Link className="flex items-center gap-4" to={''}>
-            <Info size={25} weight="light" />
-            Get help
-          </Link>
-        </li>
+        {userHasToken ? userIsAuthenticated : userNotAuthenticated}
       </ul>
     </nav>
   );
 };
+
+
