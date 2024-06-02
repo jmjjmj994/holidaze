@@ -18,3 +18,8 @@ export const hasToken = (): boolean => {
   if (!token) return false;
   return true;
 };
+
+export const getUsername = () => {
+  const username = JSON.parse(localStorage.getItem('user') || '').name;
+  return username;
+};

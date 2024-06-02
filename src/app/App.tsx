@@ -47,6 +47,7 @@ export const App = () => {
 
         {filteredVenues.map(({ id, media, location, rating, price }) => (
           <AppVenueCards
+            key={id}
             id={id}
             media={media}
             location={location}

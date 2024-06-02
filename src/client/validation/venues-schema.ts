@@ -72,12 +72,12 @@ export const VenueSchema = z.object({
   bookings: z.array(BookingSchema).default([]),
 });
 
-export const VenuesSchema = z.object({
+export const VenuesResponseSchema = z.object({
   data: z.array(VenueSchema),
   meta: z.object({
     nextPage: z.number().nullable().optional(),
   }),
 });
 
-export type VenuesResponse = z.infer<typeof VenuesSchema>;
+export type VenuesResponse = z.infer<typeof VenuesResponseSchema>;
 export type Venue = z.infer<typeof VenueSchema>;

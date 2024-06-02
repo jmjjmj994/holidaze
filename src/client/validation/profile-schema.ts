@@ -1,4 +1,26 @@
+import { Profile } from 'src/components/profile/Profile';
 import { z } from 'zod';
+
+const MediaSchema = z.object({
+  url: z.string().default(''),
+  alt: z.string().default(''),
+});
+
+const BookingSchema = z.object({
+  id: z.string(),
+  dateFrom: z.string(),
+  dateTo: z.string(),
+  guests: z.number(),
+  created: z.string(),
+  updated: z.string(),
+  customer: z.object({
+    name: z.string(),
+    email: z.string(),
+    bio: z.string().nullable().default(null),
+    avatar: MediaSchema,
+    banner: MediaSchema,
+  }),
+});
 
 const BannerSchema = z
   .object({
@@ -27,8 +49,14 @@ export const ProfileSchema = z.object({
   bio: z.string().default(''),
   avatar: AvatarSchema,
   banner: BannerSchema,
+  bookings: z.array(BookingSchema).default([]),
   venueManager: z.boolean().default(false),
   _count: CountSchema,
+});
+
+export const ProfileResponseSchema = z.object({
+  data: ProfileSchema,
+
 });
 
 export type ProfileResponse = z.infer<typeof ProfileSchema>;

@@ -20,7 +20,7 @@ export const AppVenueCards: React.FC<AppVenueCardsProps> = ({
   price,
 }) => {
   return (
-    <Link key={id} to={''}>
+    <Link to={''}>
       <article className="flex flex-col gap-2">
         <div>
           <img
