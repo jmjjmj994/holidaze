@@ -15,12 +15,14 @@ const LocationSchema = z.object({
     .number()
     .nullable()
     .transform((val) => val ?? 0)
-    .default(null).optional(),
+    .default(null)
+    .optional(),
   lng: z
     .number()
     .nullable()
     .transform((val) => val ?? 0)
-    .default(null).optional(),
+    .default(null)
+    .optional(),
 });
 
 const MetaSchema = z.object({

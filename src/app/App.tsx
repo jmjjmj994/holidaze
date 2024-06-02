@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AppSkeletonCards } from './AppSkeletonCards';
 import { useFetchVenues } from '../client/api/use-fetch-venues.hook';
-import { AppVenueCard } from './AppVenueCard';
+import { AppVenueCards } from './AppVenueCards';
 import styles from './styles.module.css';
 import { Venue } from 'src/client/validation/venues-schema';
 
@@ -16,7 +16,6 @@ export const App = () => {
     isFetchingNextPage,
     status,
   } = useFetchVenues();
-
   useEffect(() => {
     if (!isFetching) {
       const allVenues = data?.pages?.flatMap((page) => page.data);
@@ -47,7 +46,7 @@ export const App = () => {
           ))}
 
         {filteredVenues.map(({ id, media, location, rating, price }) => (
-          <AppVenueCard
+          <AppVenueCards
             id={id}
             media={media}
             location={location}

@@ -7,6 +7,7 @@ import { SearchBar } from '../searchbar/SearchBar';
 import { Profile } from '../profile/Profile';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useFetchProfile } from 'src/client/api/use-fetch-profile.hook';
 
 export const Header = () => {
   const { isActive, handleIsActiveFalse, handleIsActiveTrue } = useActive();

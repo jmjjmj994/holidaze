@@ -1,25 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Star } from 'phosphor-react';
 
-type AppVenueCardProps = {
+type AppVenueCardsProps = {
   id: string;
   media: {
     url: string;
     alt: string;
   }[];
-  location?: { city?: string  | null};
+  location?: { city?: string | null };
   rating: number;
   price: number;
 };
 
-export const AppVenueCard: React.FC<AppVenueCardProps> = ({
+export const AppVenueCards: React.FC<AppVenueCardsProps> = ({
   id,
   media,
   location,
   rating,
   price,
 }) => {
-  console.log(location);
   return (
     <Link key={id} to={''}>
       <article className="flex flex-col gap-2">
