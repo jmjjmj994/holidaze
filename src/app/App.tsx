@@ -1,29 +1,12 @@
-import { Link } from 'react-router-dom';
-import { Star } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { AppSkeletonCards } from './AppSkeletonCards';
-import axios from 'axios';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { VenuesSchema, Venues } from 'src/client/validation/venues-schema';
+import { useFetchVenues } from '../client/api/use-fetch-venues.hook';
+import { AppVenueCard } from './AppVenueCard';
 import styles from './styles.module.css';
-
-const fetchVenues = async ({ pageParam }: { pageParam: number }) => {
-  try {
-    const res = await axios.get(
-      `https://v2.api.noroff.dev/holidaze/venues/?_owner=true&_bookings=true&page=${pageParam}`
-    );
-    const data = res.data.data.map((page: Venues[]) => page);
-    const parsedData = VenuesSchema.safeParse(data);
-    if (!parsedData.success) console.error(parsedData);
-    return { data: parsedData.data, meta: res.data.meta };
-  } catch (error) {
-    console.error('Error fetching venues:', error);
-    throw error;
-  }
-};
+import { Venue } from 'src/client/validation/venues-schema';
 
 export const App = () => {
-  const [filteredVenues, setFilteredVenues] = useState<Venues[]>([]);
+  const [filteredVenues, setFilteredVenues] = useState<Venue[]>([]);
   const {
     data,
     error,
@@ -32,31 +15,24 @@ export const App = () => {
     isFetching,
     isFetchingNextPage,
     status,
-  } = useInfiniteQuery({
-    queryKey: ['venues'],
-    queryFn: fetchVenues,
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      return lastPage.meta.nextPage;
-    },
-  });
+  } = useFetchVenues();
 
   useEffect(() => {
     if (!isFetching) {
       const allVenues = data?.pages?.flatMap((page) => page.data);
-      const filterVenues = allVenues?.filter((venue) => {
-        const imageUrl = venue?.media[0]?.url;
-        if (!imageUrl) return false;
-        return (
-          venue?.location?.address &&
-          venue?.location?.city &&
-          venue?.location?.country &&
-          venue.name.length < 30 &&
-          venue.media.length > 0
-        );
-      });
-
-      setFilteredVenues(filterVenues);
+      setFilteredVenues(
+        allVenues?.filter((venue) => {
+          const imageUrl = venue?.media[0]?.url;
+          if (!imageUrl) return false;
+          return (
+            venue?.location?.address &&
+            venue?.location?.city &&
+            venue?.location?.country &&
+            venue.name.length < 30 &&
+            venue.media.length > 0
+          );
+        }) || []
+      );
     }
   }, [isFetching, data?.pages]);
 
@@ -71,29 +47,13 @@ export const App = () => {
           ))}
 
         {filteredVenues.map(({ id, media, location, rating, price }) => (
-          <Link key={id} to={''}>
-            <article className="flex flex-col gap-2" key={id}>
-              <div>
-                <img
-                  loading="lazy"
-                  className="h-full w-full  aspect-square object-cover rounded-md"
-                  src={media[0].url}
-                  alt={`image of venue`}
-                />
-              </div>
-              <div className="flex justify-between">
-                <div>
-                  <p>{location?.city}</p>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Star /> {Math.trunc(rating)}
-                </div>
-              </div>
-              <div>
-                <p>${price} night</p>
-              </div>
-            </article>
-          </Link>
+          <AppVenueCard
+            id={id}
+            media={media}
+            location={location}
+            rating={rating}
+            price={price}
+          />
         ))}
       </section>
 
