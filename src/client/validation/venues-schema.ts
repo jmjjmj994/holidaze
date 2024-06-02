@@ -18,7 +18,7 @@ export const VenuesSchema = z.array(
       .default([]),
     price: z.number(),
     maxGuests: z.number(),
-    rating: z.number(),
+    rating: z.number().default(0),
     created: z.string(),
     updated: z.string(),
     meta: z.object({

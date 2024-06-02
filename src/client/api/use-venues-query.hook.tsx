@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { VenuesSchema, Venues } from '../validation/venues-schema';
 import { options } from 'src/config/options';
 import axios from 'axios';
@@ -6,11 +6,8 @@ import { useCallback, useState } from 'react';
 
 export const useVenuesQuery = () => {
   const [page, setPage] = useState(1);
-  const handlePage = useCallback(() => {
-    setPage((prev) => prev + 1);
-  }, []);
-  const { isPending, data } = useQuery({
-    queryKey: ['venues'],
+  const { isPending, data, error, isFetching, isPlaceholderData } = useQuery({
+    queryKey: ['venues', page],
     queryFn: async () => {
       try {
         const { data } = await axios.get(
@@ -25,7 +22,7 @@ export const useVenuesQuery = () => {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
-   return { isPending, Error, data, handlePage }; 
-
+  return { isPending, error, data, isFetching, isPlaceholderData };
 };

@@ -144,7 +144,7 @@ body {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto 1fr 10rem;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 .root-header,
@@ -187,4 +187,7 @@ body {
 
 .title-gap {
   margin-block-end: 2rem;
+}
+.footer {
+  background-color: orange;
 }

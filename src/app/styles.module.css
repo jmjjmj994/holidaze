@@ -1,8 +1,8 @@
 .app_grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
   grid-template-rows: max-content;
   column-gap: 30px;
   row-gap: 50px;
-  height: 200vh;
 }
