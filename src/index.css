@@ -143,8 +143,11 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto 1fr 10rem;
-  gap: 5rem;
+  grid-template-rows: 10rem 1fr 10rem;
+}
+
+.loader-h {
+  height: calc(100vh - 10rem);
 }
 
 .root-header,

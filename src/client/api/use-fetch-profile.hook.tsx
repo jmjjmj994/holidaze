@@ -15,8 +15,6 @@ const fetchProfile = async (username: string) => {
     if (!parsedData.success)
       console.error('error parsing profile:', parsedData);
 
-    console.log(parsedData, 'parsed data here');
-
     return parsedData.data;
   } catch (error) {
     console.error('Error fetching profile:', error);
