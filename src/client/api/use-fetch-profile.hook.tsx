@@ -14,7 +14,10 @@ const fetchProfile = async (username: string) => {
     const parsedData = ProfileResponseSchema.safeParse(res.data);
     if (!parsedData.success)
       console.error('error parsing profile:', parsedData);
-    return res.data;
+
+    console.log(parsedData, 'parsed data here');
+
+    return parsedData.data;
   } catch (error) {
     console.error('Error fetching profile:', error);
     throw error;
@@ -22,10 +25,10 @@ const fetchProfile = async (username: string) => {
 };
 
 export const useFetchProfile = (username: string) => {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['profile', username],
     queryFn: () => fetchProfile(username),
   });
 
-  return { data, isLoading, isError };
+  return { data, isLoading, error };
 };
