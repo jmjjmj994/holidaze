@@ -1,0 +1,26 @@
+.booking_grid {
+  display: grid;
+  grid-template-columns: minmax(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: 30vh;
+}
+
+.booking_grid__card {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 4;
+  column-gap: 10px;
+}
+
+.booking_grid__card_img {
+  grid-column: 1;
+}
+.booking_grid__card_content {
+  grid-column: 2;
+}
+.booking_grid__card_details {
+  grid-column: 3;
+}
+
+.booking_grid__card_actions {
+  grid-column: 4;
+}

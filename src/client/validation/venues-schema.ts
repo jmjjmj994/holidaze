@@ -1,3 +1,4 @@
+import { Book } from 'phosphor-react';
 import { z } from 'zod';
 
 const MediaSchema = z.object({
@@ -81,3 +82,4 @@ export const VenuesResponseSchema = z.object({
 
 export type VenuesResponse = z.infer<typeof VenuesResponseSchema>;
 export type Venue = z.infer<typeof VenueSchema>;
+export type Booking = z.infer<typeof BookingSchema>;

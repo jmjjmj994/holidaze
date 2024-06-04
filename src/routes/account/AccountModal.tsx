@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
+import { useClickOutside } from 'src/hooks/dropdown/use-click-outside.hook';
 import { AccountForm } from './AccountForm';
 import { XCircle } from 'phosphor-react';
 

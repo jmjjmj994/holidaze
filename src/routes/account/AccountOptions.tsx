@@ -32,7 +32,7 @@ const VenueManagerActions: React.FC<VenueManagerActionsProp> = ({
       className={`${
         venueManager ? 'pointer-events-auto' : 'pointer-events-none'
       } relative`}
-      to={`${venueManager ? `/manage-venues/${name}` : ''}`}
+      to={`${venueManager ? `/bookings/${name}` : ''}`}
     >
       {!venueManager && (
         <div className="absolute inset-0 bg-white/70 flex items-center justify-center rounded-md z-1 pointer-events-auto">

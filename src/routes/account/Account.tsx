@@ -17,7 +17,7 @@ export const Account = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <section className="flex items-center justify-center loader-h flex-col">
+    <section className="flex items-center justify-center h-full flex-col">
       {isLoading && <Spinner />}
       <h1 className="max-w-[60rem] w-full title-gap ">My account</h1>
       <div className={`max-w-[60rem] w-full 0 h-full flex flex-col gap-10`}>

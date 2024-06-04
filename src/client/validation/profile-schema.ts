@@ -19,20 +19,6 @@ const BookingSchema = z
   })
   .optional();
 
-const BannerSchema = z
-  .object({
-    url: z.string().default(''),
-    alt: z.string().default(''),
-  })
-  .default({ url: '', alt: '' });
-
-const AvatarSchema = z
-  .object({
-    url: z.string().default(''),
-    alt: z.string().default(''),
-  })
-  .default({ url: '', alt: '' });
-
 const CountSchema = z
   .object({
     bookings: z.number().default(0),
@@ -44,8 +30,8 @@ export const ProfileSchema = z.object({
   name: z.string().default(''),
   email: z.string().default(''),
   bio: z.string().default(''),
-  avatar: AvatarSchema,
-  banner: BannerSchema,
+  avatar: MediaSchema,
+  banner: MediaSchema,
   bookings: z.array(BookingSchema).default([]),
   venueManager: z.boolean().default(false),
   _count: CountSchema,

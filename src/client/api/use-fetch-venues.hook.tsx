@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
+
 import { VenuesResponseSchema } from 'src/client/validation/venues-schema';
 const fetchVenues = async ({ pageParam }: { pageParam: number }) => {
   try {

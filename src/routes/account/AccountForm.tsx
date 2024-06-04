@@ -7,9 +7,6 @@ import { getUsername } from 'src/utilities/utilities';
 import { options } from 'src/config/options';
 import { PrimaryButton } from 'src/components/button/PrimaryButton';
 import { ToasterProvider } from 'src/components/ui/ToasterProvider/ToasterProvider';
-import { Spinner } from 'src/components/ui/spinner/Spinner';
-import { errorToast } from 'src/components/ui/ToasterProvider/toast';
-import { useLocation } from 'react-router-dom';
 
 export const AccountForm = () => {
   const username = getUsername();
@@ -18,7 +15,6 @@ export const AccountForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     watch,
     formState: { errors, isDirty },
   } = useForm<AccountUpdate>({
