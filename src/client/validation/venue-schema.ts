@@ -5,8 +5,7 @@ const MediaSchema = z.object({
   alt: z.string().default(''),
 });
 
-// Venue schema
-export const venueSchema = z.object({
+export const VenueSchema = z.object({
   id: z.string().default(''),
   name: z.string().default(''),
   description: z.string().default(''),
@@ -19,7 +18,7 @@ export const venueSchema = z.object({
     .object({
       avatar: MediaSchema,
       banner: MediaSchema,
-      name: z.string().default('').optional(),
+      name: z.string().optional().default(''),
       email: z.string().optional().default(''),
       bio: z.string().nullable().default(null),
     })
@@ -94,7 +93,6 @@ export const venueSchema = z.object({
     }),
 });
 
-// Bookings schema
 export const BookingSchema = z
   .array(
     z.object({
@@ -115,7 +113,7 @@ export const BookingSchema = z
   )
   .default([]);
 
-// Location schema
+
 export const LocationSchema = z
   .object({
     address: z.string().nullable().default(null),
@@ -130,5 +128,6 @@ export const LocationSchema = z
 
 export type Location = z.infer<typeof LocationSchema>;
 export type Booking = z.infer<typeof BookingSchema>;
-export type VenueType = z.infer<typeof venueSchema>;
-export type PartialVenueType = Partial<VenueType>;
+export type Venue = z.infer<typeof VenueSchema>;
+export type VenueResponse = z.infer<typeof VenueSchema>
+export type PartialVenueType = Partial<Venue>;
