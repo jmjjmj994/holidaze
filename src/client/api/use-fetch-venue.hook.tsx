@@ -1,8 +1,15 @@
 import { options } from 'src/config/options';
 import { useQuery } from '@tanstack/react-query';
-import { Venue, VenueSchema, PartialVenueType } from '../validation/venues-schema';
+import {
+  Venue,
+  VenueSchema,
+  PartialVenueType,
+} from '../validation/venues-schema';
+import { VenueResponse } from '../validation/venueType';
 import axios from 'axios';
-const fetchVenue = async (id: string) => {
+
+
+const fetchVenue = async (id: string): Promise<VenueResponse> => {
   console.log(id);
   try {
     const res = await axios.get(
@@ -11,8 +18,8 @@ const fetchVenue = async (id: string) => {
         headers: options.headers,
       }
     );
-    const parsedData = VenueSchema.safeParse(res.data.data);
-    return parsedData;
+
+    return res.data;
   } catch (error) {
     console.error(error);
     throw error;

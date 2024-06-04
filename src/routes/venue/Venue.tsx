@@ -4,7 +4,7 @@ import { VenueDetails } from './VenueDetails';
 import { VenueImage } from './VenueImage';
 
 export const Venue = () => {
-  const { id } = useParams();
+  const { data. } = useParams();
   const { data, isLoading } = useFetchVenue(id as string);
   console.log(data);
 
@@ -15,17 +15,17 @@ export const Venue = () => {
       <VenueImage media={data!.data!.media} />
       <div>
         <VenueDetails
-          id={data!.data!.id}
-          created={data!.data!.created}
-          description={data!.data!.description}
-          location={data!.data!.location}
-          maxGuests={data!.data!.maxGuests}
-          meta={data!.data!.meta}
-          name={data!.data!.name}
-          owner={data!.data!.owner}
-          price={data!.data!.price}
-          rating={data!.data!.rating}
-          updated={data!.data!.updated}
+          id={data.id}
+          created={created}
+          description={description}
+          location={location}
+          maxGuests={maxGuests}
+          meta={meta}
+          name={name}
+          owner={owner}
+          price={price}
+          rating={rating}
+          updated={updated}
         />
       </div>
     </section>
