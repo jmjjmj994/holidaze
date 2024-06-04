@@ -8,15 +8,14 @@ export type Location = {
   zip: string;
   country: string;
   continent: string;
-  lat: number;
-  lng: number;
 };
 
 export type Media = {
   url: string;
   alt: string;
-};
+}[];
 
+export type MediaObject = { url: string; alt: string };
 export type DataMeta = {
   wifi: boolean;
   parking: boolean;
@@ -24,15 +23,24 @@ export type DataMeta = {
   pets: boolean;
 };
 export type VenueResponse = {
-  id: string;
-  name: string;
-  description: string;
-  media: Media[];
-  price: number;
-  maxGuests: number;
-  rating: number;
-  created: string;
-  updated: string;
-  meta: DataMeta;
-  location: Location;
+  data: {
+    id: string;
+    name: string;
+    description: string;
+    media: MediaObject;
+    price: number;
+    maxGuests: number;
+    rating: number;
+    created: string;
+    updated: string;
+    meta: DataMeta;
+    location: Location;
+    owner: {
+      name: string;
+      avatar: MediaObject;
+      banner: MediaObject;
+      bio: string;
+      email: string;
+    };
+  };
 };

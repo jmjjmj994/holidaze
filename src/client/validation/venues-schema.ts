@@ -80,6 +80,11 @@ export const VenuesResponseSchema = z.object({
   }),
 });
 
+export const QueryVenueSchema = z.object({
+  data:VenueSchema
+})
+
 export type VenuesResponse = z.infer<typeof VenuesResponseSchema>;
 export type Venue = z.infer<typeof VenueSchema>;
 export type Booking = z.infer<typeof BookingSchema>;
+export type QueryVenue = z.infer<typeof QueryVenueSchema>;
