@@ -1,5 +1,20 @@
-export type Welcome = {
-  data: VenueResponse;
+type Customer = {
+  name: string;
+  email: string;
+  bio: string;
+  banner: MediaObject;
+  avatar: MediaObject;
+};
+
+export type Bookings = {
+  id: string;
+  created: string;
+  customer: Customer;
+  dateFrom: string;
+  dateTo: string;
+  guests: number;
+  updated: string;
+  price: number;
 };
 
 export type Location = {
@@ -22,12 +37,17 @@ export type DataMeta = {
   breakfast: boolean;
   pets: boolean;
 };
+
+
 export type VenueResponse = {
   data: {
     id: string;
     name: string;
     description: string;
-    media: MediaObject;
+    media: {
+      url: string;
+      alt: string;
+    }[];
     price: number;
     maxGuests: number;
     rating: number;
@@ -35,6 +55,7 @@ export type VenueResponse = {
     updated: string;
     meta: DataMeta;
     location: Location;
+    bookings: Bookings;
     owner: {
       name: string;
       avatar: MediaObject;

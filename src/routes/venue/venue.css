@@ -11,8 +11,10 @@
   --rdp-selected-color: #fff; /* Color of selected day text */
 
   width: 100%;
-
   padding: 4px;
+  box-shadow: var(--overlay);
+  padding: 10px;
+  display: flex;
 }
 
 /* Hide elements for devices that are not screen readers */
