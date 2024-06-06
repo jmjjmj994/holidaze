@@ -1,26 +1,45 @@
 .booking_grid {
   display: grid;
-  grid-template-columns: minmax(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: 30vh;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  column-gap: 30px;
 }
 
 .booking_grid__card {
   display: grid;
-  grid-template-columns: subgrid;
-  grid-column: span 4;
-  column-gap: 10px;
+  grid-template-rows: subgrid;
+  grid-template-rows: 10rem 3rem auto;
 }
 
 .booking_grid__card_img {
-  grid-column: 1;
+  grid-row: 1;
 }
-.booking_grid__card_content {
-  grid-column: 2;
-}
-.booking_grid__card_details {
-  grid-column: 3;
+.booking_grid__card_name {
+  grid-row: 2;
 }
 
-.booking_grid__card_actions {
-  grid-column: 4;
+.booking_grid__card_amenities {
+  grid-row: 3;
+}
+
+.booking_grid__card_buttons {
+  grid-row: 4;
+}
+
+.booking_update:hover {
+  transition: 150ms ease-in-out;
+  rotate: 180deg;
+}
+.booking_delete:hover {
+  animation-name: shake;
+  animation-duration: 150ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: rotate(10deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
 }

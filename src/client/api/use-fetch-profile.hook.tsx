@@ -2,8 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { options } from 'src/config/options';
 import { ProfileResponseSchema } from '../validation/profile-schema';
+import { ProfileResponse } from '../validation/profileType';
 
-const fetchProfile = async (username: string) => {
+const fetchProfile = async (username: string):Promise<ProfileResponse> => {
   try {
     const res = await axios.get(
       `https://v2.api.noroff.dev/holidaze/profiles/${username}?_bookings=true`,
@@ -11,11 +12,7 @@ const fetchProfile = async (username: string) => {
         headers: options.headers,
       }
     );
-    const parsedData = ProfileResponseSchema.safeParse(res.data);
-    if (!parsedData.success)
-      console.error('error parsing profile:', parsedData);
-
-    return parsedData.data;
+   return res.data
   } catch (error) {
     console.error('Error fetching profile:', error);
     throw error;

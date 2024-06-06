@@ -22,8 +22,8 @@ export const Venue = () => {
 
       <div className="flex flex-col lg:flex-row justify-between">
         <VenueDetails
-          id={venueData.id}
-          created={venueData.created}
+     
+       
           description={venueData.description}
           location={venueData.location}
           maxGuests={venueData.maxGuests}
@@ -32,7 +32,7 @@ export const Venue = () => {
           name={venueData.name}
           price={venueData.price}
           rating={venueData.rating}
-          updated={venueData.updated}
+   
         />
         <VenueForm
           id={venueData.id}

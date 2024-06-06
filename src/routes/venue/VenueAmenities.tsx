@@ -1,11 +1,4 @@
-import {
-  MapPin,
-  Pizza,
-  WifiHigh,
-  Car,
-  PawPrint,
-  UsersFour,
-} from 'phosphor-react';
+import { Pizza, WifiHigh, Car, PawPrint } from 'phosphor-react';
 import { VenueDetailsProps } from './VenueDetails';
 
 type AmenitiesProps = VenueDetailsProps['meta'];
@@ -15,10 +8,9 @@ export const VenueAmenities: React.FC<AmenitiesProps> = ({
   pets,
   parking,
   breakfast,
-  /*   maxGuests, */
 }) => (
   <div>
-    <p className="inter-bold">This place offers</p>
+    <p className="inter-bold py-2">This place offers</p>
     {wifi ? (
       <span className="line-through flex items-center gap-2">
         <WifiHigh size={25} />

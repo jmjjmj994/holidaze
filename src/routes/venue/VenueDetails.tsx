@@ -2,8 +2,6 @@ import { MapPin, Star, UsersFour } from 'phosphor-react';
 import { VenueAmenities } from './VenueAmenities';
 import { VenueOwner } from './VenueOwner';
 export type VenueDetailsProps = {
-  id: string;
-  created: string;
   location: {
     address: string;
     city: string;
@@ -21,7 +19,7 @@ export type VenueDetailsProps = {
   price: number;
   rating: number;
   name: string;
-  updated: string;
+
   owner: {
     name: string;
     avatar: { url: string; alt: string };
@@ -32,8 +30,6 @@ export type VenueDetailsProps = {
 };
 
 export const VenueDetails: React.FC<VenueDetailsProps> = ({
-  id,
-  created,
   description,
   location,
   maxGuests,
@@ -42,7 +38,6 @@ export const VenueDetails: React.FC<VenueDetailsProps> = ({
   owner,
   price,
   rating,
-  updated,
 }) => {
   console.log(meta);
   return (
@@ -79,7 +74,7 @@ export const VenueDetails: React.FC<VenueDetailsProps> = ({
       />
       <hr className="my-4" />
       <div>
-        <p className="inter-bold">Description </p>
+        <p className="inter-bold py-2">Description </p>
         <p>{description}</p>
       </div>
     </section>
