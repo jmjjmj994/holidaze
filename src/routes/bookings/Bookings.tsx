@@ -11,13 +11,23 @@ export const Bookings = () => {
   const profileData = data?.data?.bookings;
   if (isLoading) return <Spinner />;
   if (profileData?.length === 0) return <p>You have no upcoming bookings</p>;
+  console.log(profileData);
+  const profileBooking = profileData!.map(({ dateFrom, dateTo, venue }) => ({
+    dateFrom,
+    dateTo,
+    venue,
+  }));
   return (
     <section className="flex items-center justify-center h-full flex-col ">
       <h1 className=" w-full title-gap text-left">My bookings</h1>
       <ul className={styles.booking_grid}>
         {profileData &&
-          profileData.map(
-            ({ venue: { id, name, maxGuests, media, meta, price } }) => (
+          profileBooking.map(
+            ({
+              dateFrom,
+              dateTo,
+              venue: { id, name, maxGuests, media, meta, price },
+            }) => (
               <BookingsCard
                 id={id}
                 name={name}
@@ -25,6 +35,8 @@ export const Bookings = () => {
                 media={media}
                 meta={meta}
                 price={price}
+                dateTo={dateTo as string}
+                dateFrom={dateFrom as string}
               />
             )
           )}

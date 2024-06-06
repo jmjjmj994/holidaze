@@ -1,13 +1,14 @@
 .booking_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   column-gap: 30px;
+  row-gap: 30px;
 }
 
 .booking_grid__card {
   display: grid;
   grid-template-rows: subgrid;
-  grid-template-rows: 10rem 3rem auto;
+  gap: 5px;
 }
 
 .booking_grid__card_img {
@@ -16,13 +17,16 @@
 .booking_grid__card_name {
   grid-row: 2;
 }
-
-.booking_grid__card_amenities {
+.booking_grid__card_details {
   grid-row: 3;
 }
 
-.booking_grid__card_buttons {
+.booking_grid__card_amenities {
   grid-row: 4;
+}
+
+.booking_grid__card_buttons {
+  grid-row: 5;
 }
 
 .booking_update:hover {
@@ -37,9 +41,19 @@
 }
 
 @keyframes shake {
-  0% { transform: rotate(10deg); }
-  25% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-  75% { transform: rotate(-10deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(10deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

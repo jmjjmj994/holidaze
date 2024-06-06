@@ -32,6 +32,8 @@ type Venue = {
   updated: string;
   meta: VenueMeta;
   location: LocationType;
+  dateFrom?: string;
+  dateTo?: string;
 };
 
 type Booking = {
@@ -49,18 +51,6 @@ type Count = {
   bookings: number;
 };
 
-/* type UserData = {
-  name: string;
-  email: string;
-  bio: string;
-  avatar: Image;
-  banner: Image;
-  venueManager: boolean;
-  venues: Venue[];
-  bookings: Booking[];
-  _count: Count;
-}; */
-
 export type ProfileResponse = {
   data: {
     name: string;
@@ -73,5 +63,3 @@ export type ProfileResponse = {
     _count: Count;
   };
 };
-
-type Meta = {};
